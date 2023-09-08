@@ -1,0 +1,56 @@
+/* Defaults */
+
+:root {
+  /* ## COLORS */
+  --darkNavy: #1A2A33;
+  --lightBlue: #31C3BD;
+  --lightBlueHover: #65E9E4;
+  --LightYellow: #F2B137;
+  --lightYellowHover: #FFC860;
+  --semiDarkNavy: #1F3641;
+  --silver: #A8BFC9;
+  --silverHover: #DBE8ED;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+button {
+  font-family: 'Outfit', sans-serif;
+  font-weight: bold;
+}
+
+p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+}
+
+h1 {
+  font-size: 40px;
+  letter-spacing: 2.5px;
+}
+
+h2 {
+  font-size: 24px;
+  letter-spacing: 1.5px;
+}
+
+h3,
+.primary-button {
+  font-size: 20px;
+  letter-spacing: 1.25px;
+}
+
+h4,
+.secondary-button {
+  font-size: 16px;
+  letter-spacing: 1px;
+}
