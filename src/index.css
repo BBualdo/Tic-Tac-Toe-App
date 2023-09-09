@@ -75,9 +75,12 @@ body {
   align-items: center;
   background-color: var(--semiDarkNavy);
   border-radius: 15px;
+  box-shadow: 0px 8px 0px #10212A;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-bottom: 40px;
+  margin-top: 40px;
   padding: 24px;
   width: 460px;
 }
@@ -135,8 +138,18 @@ body {
 
 .cpu {
   background-color: var(--LightYellow);
+  box-shadow: 0px 8px 0px #CC8B13;
+}
+
+.cpu:hover {
+  background-color: var(--lightYellowHover);
 }
 
 .player {
   background-color: var(--lightBlue);
+  box-shadow: 0px 8px 0px #118C87;
+}
+
+.player:hover {
+  background-color: var(--lightBlueHover);
 }
