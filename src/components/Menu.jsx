@@ -13,13 +13,14 @@ export default function Menu() {
         </div>
         <p className="hint">Remember : X Goes First</p>
       </div>
-      <div className="menu-buttons"></div>
-      <button className="new-game--button">
-        NEW GAME (VS CPU)
-      </button>
-      <button className="new-game--button">
-        NEW GAME (VS PLAYER)
-      </button>
+      <div className="menu-buttons">
+        <button className="new-game--button cpu">
+          NEW GAME (VS CPU)
+        </button>
+        <button className="new-game--button player">
+          NEW GAME (VS PLAYER)
+        </button>
+      </div>
     </section>
   )
 }

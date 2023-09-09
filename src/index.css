@@ -109,11 +109,34 @@ body {
   background-repeat: no-repeat;
   background-size: 32px;
   border-radius: 10px;
-  height: 72px;
+  cursor: pointer;
+  height: 66px;
   width: 50%;
 }
 
 .pick-mark > p {
   color: var(--silver);
   opacity: 0.5;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.new-game--button {
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  height: 61px;
+  width: 460px;
+}
+
+.cpu {
+  background-color: var(--LightYellow);
+}
+
+.player {
+  background-color: var(--lightBlue);
 }
