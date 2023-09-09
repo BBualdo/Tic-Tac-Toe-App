@@ -67,4 +67,53 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.pick-mark {
+  align-items: center;
+  background-color: var(--semiDarkNavy);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  width: 460px;
+}
+
+.pick-mark > h4 {
+  color: var(--silver);
+}
+
+.mark-picker {
+  background-color: var(--darkNavy);
+  border-radius: 10px;
+  display: flex;
+  padding: 9px 8px;
+  width: 100%;
+}
+
+.pick--o {
+  background: url(./images/picked-o.svg) center no-repeat;
+  background-color: var(--silver);
+}
+
+.pick--x {
+  background-image: url(./images/pick-x.svg);
+}
+
+.pick--x,
+.pick--o {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 32px;
+  border-radius: 10px;
+  height: 72px;
+  width: 50%;
+}
+
+.pick-mark > p {
+  color: var(--silver);
+  opacity: 0.5;
 }
