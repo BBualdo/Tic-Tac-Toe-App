@@ -52,7 +52,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 ## Some drafts and loud thoughs
 
 - Chosing mark should save the choice in a player state and save other choice as CPU (or 2nd player depending of which 'New Game' button is clicked).
-- Chosing mark should apply a class on it to change the color of image inside and div's color. Same if hovering on inactive choice.
+✅ Chosing mark should apply a class on it to change the color of image inside and div's color. Same if hovering on inactive choice.
+-
 
 ### Built with
 
