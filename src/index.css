@@ -97,24 +97,32 @@ body {
   width: 100%;
 }
 
+.pick--x,
 .pick--o {
-  background: url(./images/picked-o.svg) center no-repeat;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  height: 66px;
+  width: 50%;
+}
+
+.not-picked:hover {
+  background-color: #A8BFC90D;
+}
+
+.pick--x > img,
+.pick--o > img {
+  height: 32px;
+}
+
+.picked {
   background-color: var(--silver);
 }
 
-.pick--x {
-  background-image: url(./images/pick-x.svg);
-}
-
-.pick--x,
-.pick--o {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 32px;
-  border-radius: 10px;
-  cursor: pointer;
-  height: 66px;
-  width: 50%;
+.picked > img {
+  filter: invert(1) sepia(1) brightness(0.5) hue-rotate(180deg);
 }
 
 .pick-mark > p {
