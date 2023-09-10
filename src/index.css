@@ -269,14 +269,14 @@ header {
   background-repeat: no-repeat;
 }
 
-.results {
+.scores {
   align-items: center;
   display: flex;
   justify-content: space-between;
   width: 460px;
 }
 
-.result {
+.score {
   align-items: center;
   border-radius: 15px;
   display: flex;
@@ -286,14 +286,14 @@ header {
   width: 140px;
 }
 
-.result--x {
+.score--x {
   background-color: var(--lightBlue);
 }
 
-.result-ties {
+.score-ties {
   background-color: var(--silver);
 }
 
-.result--o {
+.score--o {
   background-color: var(--LightYellow);
 }

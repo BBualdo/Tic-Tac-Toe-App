@@ -10,8 +10,8 @@ export default function Board(props) {
   const [currentPlayer, setCurrentPlayer] = React.useState('x');
   // Represents game status
   const [gameResult, setGameResult] = React.useState('ongoing');
-  // Counting results
-  const [results, setResults] = React.useState({
+  // Counting Score
+  const [score, setScore] = React.useState({
     xWins: 0,
     ties: 0,
     oWins: 0 
@@ -30,11 +30,12 @@ export default function Board(props) {
         const winner = checkWinner(newBoard);
         if (winner) {
           setGameResult(winner === 'tie' ? 'tie' : `${winner} wins`)
+          // update the score 
           winner === 'x' 
-          ? setResults(prevResults => ({...prevResults, xWins: prevResults.xWins + 1})) 
+          ? setScore(prevScore => ({...prevScore, xWins: prevScore.xWins + 1})) 
           : winner === 'o'
-          ? setResults(prevResults => ({...prevResults, oWins: prevResults.oWins + 1}))
-          : setResults(prevResults => ({...prevResults, ties: prevResults.ties + 1}))
+          ? setScore(prevScore => ({...prevScore, oWins: prevScore.oWins + 1}))
+          : setScore(prevScore => ({...prevScore, ties: prevScore.ties + 1}))
         } else {
           nextTurn()
         }
@@ -120,18 +121,18 @@ export default function Board(props) {
       <div className="board--grid">
       <BoardFields />
       </div>
-      <div className="results">
-        <div className="result result--x">
+      <div className="scores">
+        <div className="score score--x">
           <p>X ({/* Add info about who is it */})</p>
-          <h2>{results.xWins}</h2>
+          <h2>{score.xWins}</h2>
         </div>
-        <div className="result result-ties">
+        <div className="score score-ties">
           <p>Ties</p>
-          <h2>{results.ties}</h2>
+          <h2>{score.ties}</h2>
         </div>
-        <div className="result result--o">
+        <div className="score score--o">
           <p>O ({/* Add info about who is it */})</p>
-          <h2>{results.oWins}</h2>
+          <h2>{score.oWins}</h2>
         </div>
       </div>
     </section>
