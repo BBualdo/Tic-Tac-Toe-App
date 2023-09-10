@@ -20,6 +20,9 @@ export default function Board(props) {
 
   // board rendering component
   function BoardFields() {
+    // Represents cell hover image
+    const [hoveredCell, setHoveredCell] = React.useState(null);
+
     const handleCellClick = (i) => {
       if (board[i] === '' && gameResult === 'ongoing') {
         const newBoard = [...board];
@@ -37,8 +40,16 @@ export default function Board(props) {
     return board.map((cell, i) => (
       <div 
       key={i} 
-      className={`board--field field--${cell}`} 
+      className={
+        `board--field field--${cell} 
+        ${hoveredCell === i 
+          && cell === '' 
+          && gameResult === 'ongoing' 
+          && `cell-hover-${currentPlayer}`}`
+      }
       onClick={() => handleCellClick(i)}
+      onMouseEnter={() => setHoveredCell(i)}
+      onMouseLeave={() => setHoveredCell(null)}
       >{cell}</div>
     ))
   }
@@ -56,13 +67,12 @@ export default function Board(props) {
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
         return board[a]; // Return mark that is on this position
       }
-
-      if (board.every(cell => cell !== '')) {
-        return 'tie' // If every cell is occupied and not found any win condition there is a tie
-      }
-
-      return null // Game is still ongoing
     }
+    if (board.every(cell => cell !== '')) {
+      return 'tie' // If every cell is occupied and not found any win condition there is a tie
+    }
+
+    return null // Game is still ongoing
   }
 
   // function that check who's turn is it

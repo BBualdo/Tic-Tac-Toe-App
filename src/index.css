@@ -255,6 +255,20 @@ header {
   color: transparent;
 }
 
+.cell-hover-x {
+  background-image: url(./images/icon-x-outline.svg);
+}
+
+.cell-hover-o {
+  background-image: url(./images/icon-o-outline.svg);
+}
+
+.cell-hover-x,
+.cell-hover-o {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .results {
   align-items: center;
   display: flex;
