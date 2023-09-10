@@ -186,7 +186,7 @@ export default function Board(props) {
       </div>
       <div className="scores">
         <div className="score score--x">
-          <p>X ({/* Add info about who is it */})</p>
+          <p>X ({props.player === 'x' ? 'Player 1' : 'Player 2'})</p>
           <h2>{score.xWins}</h2>
         </div>
         <div className="score score-ties">
@@ -194,7 +194,7 @@ export default function Board(props) {
           <h2>{score.ties}</h2>
         </div>
         <div className="score score--o">
-          <p>O ({/* Add info about who is it */})</p>
+          <p>O ({props.player === 'o' ? 'Player 1' : 'Player 2'})</p>
           <h2>{score.oWins}</h2>
         </div>
       </div>
