@@ -4,31 +4,30 @@ import xTurn from '../images/pick-x.svg';
 import oTurn from '../images/pick-o.svg';
 
 export default function Board(props) {
-  const [currentPlayerTurn, setCurrentPlayerTurn] = React.useState('x');
-
+  // Represent the game board
+  const [board, setBoard] = React.useState(Array(9).fill(''));
+  // Represents currentPlayer
+  const [currentPlayer, setCurrentPlayer] = React.useState('x');
+  
   // function that switches turns
   function nextTurn() {
-    setCurrentPlayerTurn(prevTurn => {
-      return prevTurn === 'x' ? 'o' : 'x'
+    setCurrentPlayer(prevPlayer => {
+      return prevPlayer === 'x' ? 'o' : 'x'
     })
   }
 
   function BoardFields() {
-    const fields = []
-    for (let i = 0; i < 9; i++) {
-      fields.push(
+    return board.map((cell, i) => (
       <div 
       key={i} 
-      className="board--field field--x" 
+      className="board--field" 
       onClick={nextTurn}
-      />
-      )
-    }
-    return fields
+      >{cell}</div>
+    ))
   }
 
   function whosTurn() {
-    if (currentPlayerTurn === 'x') {
+    if (currentPlayer === 'x') {
       return xTurn
     } else {
       return oTurn
