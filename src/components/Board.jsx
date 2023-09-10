@@ -10,13 +10,12 @@ export default function Board(props) {
   const [currentPlayer, setCurrentPlayer] = React.useState('x');
   // Represents game status
   const [gameResult, setGameResult] = React.useState('ongoing');
-
-  // function that switches turns
-  function nextTurn() {
-    setCurrentPlayer(prevPlayer => {
-      return prevPlayer === 'x' ? 'o' : 'x'
-    })
-  }
+  // Counting results
+  const [results, setResults] = React.useState({
+    xWins: 0,
+    ties: 0,
+    oWins: 0 
+  })
 
   // board rendering component
   function BoardFields() {
@@ -31,11 +30,23 @@ export default function Board(props) {
         const winner = checkWinner(newBoard);
         if (winner) {
           setGameResult(winner === 'tie' ? 'tie' : `${winner} wins`)
+          winner === 'x' 
+          ? setResults(prevResults => ({...prevResults, xWins: prevResults.xWins + 1})) 
+          : winner === 'o'
+          ? setResults(prevResults => ({...prevResults, oWins: prevResults.oWins + 1}))
+          : setResults(prevResults => ({...prevResults, ties: prevResults.ties + 1}))
         } else {
           nextTurn()
         }
       }
     };
+
+     // function that switches turns
+    function nextTurn() {
+      setCurrentPlayer(prevPlayer => {
+        return prevPlayer === 'x' ? 'o' : 'x'
+      })
+    }
 
     return board.map((cell, i) => (
       <div 
@@ -68,6 +79,7 @@ export default function Board(props) {
         return board[a]; // Return mark that is on this position
       }
     }
+    
     if (board.every(cell => cell !== '')) {
       return 'tie' // If every cell is occupied and not found any win condition there is a tie
     }
@@ -111,15 +123,15 @@ export default function Board(props) {
       <div className="results">
         <div className="result result--x">
           <p>X ({/* Add info about who is it */})</p>
-          <h2>0</h2>
+          <h2>{results.xWins}</h2>
         </div>
         <div className="result result-ties">
           <p>Ties</p>
-          <h2>0</h2>
+          <h2>{results.ties}</h2>
         </div>
         <div className="result result--o">
           <p>O ({/* Add info about who is it */})</p>
-          <h2>0</h2>
+          <h2>{results.oWins}</h2>
         </div>
       </div>
     </section>
