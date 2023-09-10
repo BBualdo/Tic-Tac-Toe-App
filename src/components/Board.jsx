@@ -27,8 +27,10 @@ export default function Board(props) {
   function Result() {
     return (
       <section className="result-popup">
-        {gameResult !== 'tie' && props.player !== gameResult && <h4>Player 2 wins!</h4>}
-        {props.player === gameResult && <h4>Player 1 wins!</h4>}
+        {gameResult !== 'tie' && props.player !== gameResult && props.CPU && <h4>Oh no, you lost...</h4>}
+        {props.player === gameResult && props.CPU && <h4>You won!</h4>}
+        {gameResult !== 'tie' && props.player !== gameResult && !props.CPU && <h4>Player 2 wins!</h4>}
+        {props.player === gameResult && !props.CPU && <h4>Player 1 wins!</h4>}
         {gameResult === 'tie' && <h4></h4>}
         <div className="winner">
           <img src={
@@ -197,7 +199,12 @@ export default function Board(props) {
         </div>
         <div className="scores">
           <div className="score score--x">
-            <p>X ({props.player === 'x' ? 'Player 1' : 'Player 2'})</p>
+            <p>X ({
+            props.player === 'x' 
+            ? 'Player 1' 
+            : props.CPU 
+            ? 'CPU'
+            : 'Player 2'})</p>
             <h2>{score.xWins}</h2>
           </div>
           <div className="score score-ties">
@@ -205,7 +212,12 @@ export default function Board(props) {
             <h2>{score.ties}</h2>
           </div>
           <div className="score score--o">
-            <p>O ({props.player === 'o' ? 'Player 1' : 'Player 2'})</p>
+            <p>O ({
+            props.player === 'o' 
+            ? 'Player 1' 
+            : props.CPU 
+            ? 'CPU'
+            : 'Player 2'})</p>
             <h2>{score.oWins}</h2>
           </div>
         </div>

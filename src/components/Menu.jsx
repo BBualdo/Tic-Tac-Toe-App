@@ -34,13 +34,19 @@ export default function Menu(props) {
       <div className="menu-buttons">
         <button 
         className="primary-button new-game--button cpu"
-        onClick={props.togglePage}
+        onClick={() => {
+          props.togglePage();
+          props.setCPU(true)
+        }}
         >
           NEW GAME (VS CPU)
         </button>
         <button 
         className="primary-button new-game--button player"
-        onClick={props.togglePage}
+        onClick={() => {
+          props.togglePage();
+          props.setCPU(false)
+        }}
         >
           NEW GAME (VS PLAYER)
         </button>

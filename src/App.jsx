@@ -4,6 +4,7 @@ import Board from "./components/Board";
 
 export default function App() {
   const [player1, setPlayer1] = React.useState('x');
+  const [computer, setComputer] = React.useState(false);
   const [currentPage, setCurrentPage] = React.useState('menu');
 
 // function to change player related on mark
@@ -21,6 +22,11 @@ export default function App() {
       }
     })
   }
+  // changes CPU to true (ON) or false (OFF)
+  function setCPU(bool) {
+    setComputer(bool)
+  }
+  
 // function to render the page with updated props
   function renderPage() {
     if (currentPage === 'menu') {
@@ -29,12 +35,15 @@ export default function App() {
           togglePage={togglePage}
           chooseMark={chooseMark}
           player={player1}
+          CPU={computer}
+          setCPU={setCPU}
         />
       )
     } else {
       return <Board 
           togglePage={togglePage}
           player={player1}
+          CPU={computer}
       />
     }
   }
