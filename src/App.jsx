@@ -13,7 +13,13 @@ export default function App() {
 
 // function to change the page to board
   function togglePage() {
-    setCurrentPage('board')
+    setCurrentPage(prevPage => {
+      if (prevPage === 'menu') {
+        return 'board'
+      } else {
+        return 'menu'
+      }
+    })
   }
 // function to render the page with updated props
   function renderPage() {
@@ -27,6 +33,7 @@ export default function App() {
       )
     } else {
       return <Board 
+          togglePage={togglePage}
           player={player1}
       />
     }

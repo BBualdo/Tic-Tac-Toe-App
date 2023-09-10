@@ -2,6 +2,8 @@ import React from "react";
 import logo from '../images/logo.svg';
 import xTurn from '../images/pick-x.svg';
 import oTurn from '../images/pick-o.svg';
+import xIcon from '../images/icon-x.svg';
+import oIcon from '../images/icon-o.svg';
 
 export default function Board(props) {
   // Represent the game board
@@ -15,13 +17,53 @@ export default function Board(props) {
     xWins: 0,
     ties: 0,
     oWins: 0 
-  })
+  });
+  // Represents showing Restart Overlay
+  const [showRestart, setShowRestart] = React.useState(false);
+
+  // Result components
+  function Result() {
+    return (
+      <section className="result-popup">
+        {gameResult !== 'tie' && props.player !== gameResult && <h4>Oh no, you lost...</h4>}
+        {props.player === gameResult && <h4>You won!</h4>}
+        {gameResult === 'tie' && <h4></h4>}
+        <div className="winner">
+          <img src={
+            gameResult === 'x' 
+            ? xIcon 
+            : gameResult === 'o' 
+            ? oIcon 
+            : ''}/>
+          <h1 className={
+            gameResult === 'x'
+            ? 'x-won'
+            : gameResult === 'o'
+            ? 'o-won'
+            : 'no-won'}>{
+            gameResult === 'tie'
+            ? `Round Tied`
+            : `Takes the round`}</h1>
+        </div>
+        <div className="result-buttons">
+          <button 
+          className="quit--button"
+          onClick={props.togglePage}
+          >Quit</button>
+          <button 
+          className="next-round--button"
+          onClick={restartGame}
+          >Next Round</button>
+        </div>
+      </section>
+    )
+  }
 
   // board rendering component
   function BoardFields() {
     // Represents cell hover image
     const [hoveredCell, setHoveredCell] = React.useState(null);
-
+    
     const handleCellClick = (i) => {
       if (board[i] === '' && gameResult === 'ongoing') {
         const newBoard = [...board];
@@ -29,7 +71,7 @@ export default function Board(props) {
         setBoard(newBoard);
         const winner = checkWinner(newBoard);
         if (winner) {
-          setGameResult(winner === 'tie' ? 'tie' : `${winner} wins`)
+          setGameResult(winner === 'tie' ? 'tie' : `${winner}`)
           // update the score 
           winner === 'x' 
           ? setScore(prevScore => ({...prevScore, xWins: prevScore.xWins + 1})) 
@@ -96,15 +138,36 @@ export default function Board(props) {
       return oTurn
     }
   }
+
+  // Ask to restart component
+  function AskToRestart() {
+    return (
+      <section className="restart-popup">
+          <h1 className='no-won'>Restart Game?</h1>
+        <div className="result-buttons">
+          <button 
+          className="quit--button"
+          onClick={() => setShowRestart(false)}
+          >No, cancel</button>
+          <button 
+          className="next-round--button"
+          onClick={restartGame}
+          >Yes, restart</button>
+        </div>
+      </section>
+    )
+  }
+
   // function that restarts the game
   function restartGame() {
     setBoard(Array(9).fill(''))
     setCurrentPlayer('x')
     setGameResult('ongoing')
+    setShowRestart(false)
   }
 
   return (
-    <section className="board">
+    <section className="board overlay">
       <header>
       <img className="app--logo" src={logo}/>
       <div className="current-turn">
@@ -114,7 +177,7 @@ export default function Board(props) {
         <h4>Turn</h4>
       </div>
       <button 
-      onClick={restartGame}
+      onClick={() => setShowRestart(true)}
       className="restart-game--button"
       ></button>
       </header>
@@ -135,6 +198,8 @@ export default function Board(props) {
           <h2>{score.oWins}</h2>
         </div>
       </div>
+      {gameResult !== 'ongoing' && <Result />}
+      {showRestart && <AskToRestart />}
     </section>
   )
 }
