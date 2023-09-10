@@ -271,6 +271,18 @@ header {
   background-repeat: no-repeat;
 }
 
+.winner-cell--x {
+  background-color: var(--lightBlue);
+  box-shadow: 0px -8px 0px #118C87 inset;
+  background-image: url(./images/picked-x.svg);
+}
+
+.winner-cell--o {
+  background-color: var(--LightYellow);
+  box-shadow: 0px -8px 0px #CC8B13 inset;
+  background-image: url(./images/picked-o.svg);
+}
+
 .scores {
   align-items: center;
   display: flex;

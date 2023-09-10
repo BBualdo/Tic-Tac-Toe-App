@@ -20,6 +20,8 @@ export default function Board(props) {
   });
   // Represents showing Restart Overlay
   const [showRestart, setShowRestart] = React.useState(false);
+  // Represent which cells should be styled
+  const [styleWinners, setStyleWinners] = React.useState([])
 
   // Result components
   function Result() {
@@ -99,7 +101,10 @@ export default function Board(props) {
         ${hoveredCell === i 
           && cell === '' 
           && gameResult === 'ongoing' 
-          && `cell-hover-${currentPlayer}`}`
+          && `cell-hover-${currentPlayer}`}
+        ${styleWinners.includes(i)
+          ? `winner-cell--${gameResult}`
+          : ''}`
       }
       onClick={() => handleCellClick(i)}
       onMouseEnter={() => setHoveredCell(i)}
@@ -119,6 +124,7 @@ export default function Board(props) {
     for (const condition of winConditions) {
       const [a, b, c] = condition;
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        setStyleWinners(condition)
         return board[a]; // Return mark that is on this position
       }
     }
