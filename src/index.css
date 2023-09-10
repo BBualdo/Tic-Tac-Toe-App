@@ -240,10 +240,12 @@ header {
 
 .field--x {
   background-image: url(./images/icon-x.svg);
+  cursor: default;
 }
 
 .field--o {
   background-image: url(./images/icon-o.svg);
+  cursor: default;
 }
 
 .field--x,

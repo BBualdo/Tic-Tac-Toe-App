@@ -73,6 +73,12 @@ export default function Board(props) {
       return oTurn
     }
   }
+  // function that restarts the game
+  function restartGame() {
+    setBoard(Array(9).fill(''))
+    setCurrentPlayer('x')
+    setGameResult('ongoing')
+  }
 
   return (
     <section className="board">
@@ -84,7 +90,10 @@ export default function Board(props) {
         src={whosTurn()}/>
         <h4>Turn</h4>
       </div>
-      <button className="restart-game--button"></button>
+      <button 
+      onClick={restartGame}
+      className="restart-game--button"
+      ></button>
       </header>
       <div className="board--grid">
       <BoardFields />
