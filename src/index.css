@@ -301,6 +301,10 @@ header {
 }
 
 /* Overlays */
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  filter: brightness(0.5);
+}
 
 .result-popup,
 .restart-popup {
@@ -313,6 +317,7 @@ header {
   padding: 40px 0;
   position: absolute;
   right: 0;
+  top: 37%;
 }
 
 .result-popup {

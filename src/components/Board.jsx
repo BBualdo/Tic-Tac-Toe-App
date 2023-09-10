@@ -25,8 +25,8 @@ export default function Board(props) {
   function Result() {
     return (
       <section className="result-popup">
-        {gameResult !== 'tie' && props.player !== gameResult && <h4>Oh no, you lost...</h4>}
-        {props.player === gameResult && <h4>You won!</h4>}
+        {gameResult !== 'tie' && props.player !== gameResult && <h4>Player 2 wins!</h4>}
+        {props.player === gameResult && <h4>Player 1 wins!</h4>}
         {gameResult === 'tie' && <h4></h4>}
         <div className="winner">
           <img src={
@@ -167,39 +167,47 @@ export default function Board(props) {
   }
 
   return (
-    <section className="board overlay">
-      <header>
-      <img className="app--logo" src={logo}/>
-      <div className="current-turn">
-        <img 
-        className="current-player--img" 
-        src={whosTurn()}/>
-        <h4>Turn</h4>
-      </div>
-      <button 
-      onClick={() => setShowRestart(true)}
-      className="restart-game--button"
-      ></button>
-      </header>
-      <div className="board--grid">
-      <BoardFields />
-      </div>
-      <div className="scores">
-        <div className="score score--x">
-          <p>X ({props.player === 'x' ? 'Player 1' : 'Player 2'})</p>
-          <h2>{score.xWins}</h2>
+    <section className="board-page">
+      <section 
+      className={`board ${
+        gameResult !== 'ongoing' || showRestart
+        ? 'overlay'
+        : ''}`}>
+        <header>
+        <img className="app--logo" src={logo}/>
+        <div className="current-turn">
+          <img 
+          className="current-player--img" 
+          src={whosTurn()}/>
+          <h4>Turn</h4>
         </div>
-        <div className="score score-ties">
-          <p>Ties</p>
-          <h2>{score.ties}</h2>
+        <button 
+        onClick={() => setShowRestart(true)}
+        className="restart-game--button"
+        ></button>
+        </header>
+        <div className="board--grid">
+        <BoardFields />
         </div>
-        <div className="score score--o">
-          <p>O ({props.player === 'o' ? 'Player 1' : 'Player 2'})</p>
-          <h2>{score.oWins}</h2>
+        <div className="scores">
+          <div className="score score--x">
+            <p>X ({props.player === 'x' ? 'Player 1' : 'Player 2'})</p>
+            <h2>{score.xWins}</h2>
+          </div>
+          <div className="score score-ties">
+            <p>Ties</p>
+            <h2>{score.ties}</h2>
+          </div>
+          <div className="score score--o">
+            <p>O ({props.player === 'o' ? 'Player 1' : 'Player 2'})</p>
+            <h2>{score.oWins}</h2>
+          </div>
         </div>
-      </div>
-      {gameResult !== 'ongoing' && <Result />}
-      {showRestart && <AskToRestart />}
+      </section>
+      <section className="popups">
+        {gameResult !== 'ongoing' && <Result />}
+        {showRestart && <AskToRestart />}
+      </section>
     </section>
   )
 }
