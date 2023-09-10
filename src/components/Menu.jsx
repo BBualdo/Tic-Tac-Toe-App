@@ -11,18 +11,18 @@ export default function Menu(props) {
         <h4>Pick Player 1's Mark</h4>
         <div className="mark-picker">
           <div 
-          onClick={() => props.chooseMark('X')}
+          onClick={() => props.chooseMark('x')}
           className={`pick--x 
-          ${props.player === 'X'
+          ${props.player === 'x'
           ? 'picked'
           : 'not-picked'}`}
           >
             <img src={pickX}/>
           </div>
           <div 
-          onClick={() => props.chooseMark('O')}
+          onClick={() => props.chooseMark('o')}
           className={`pick--o 
-          ${props.player === 'O'
+          ${props.player === 'o'
           ? 'picked'
           : 'not-picked'}`}
           >

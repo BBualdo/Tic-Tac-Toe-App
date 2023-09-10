@@ -238,10 +238,6 @@ header {
   width: 140px;
 }
 
-.board--field:hover {
-  background: url();
-}
-
 .results {
   align-items: center;
   display: flex;

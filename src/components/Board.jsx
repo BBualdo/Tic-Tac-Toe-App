@@ -4,6 +4,14 @@ import xTurn from '../images/pick-x.svg';
 import oTurn from '../images/pick-o.svg';
 
 export default function Board(props) {
+  const [currentPlayerTurn, setCurrentPlayerTurn] = React.useState('x');
+
+  // function that switches turns
+  function nextTurn() {
+    setCurrentPlayerTurn(prevTurn => {
+      return prevTurn === 'x' ? 'o' : 'x'
+    })
+  }
 
   function BoardFields() {
     const fields = []
@@ -11,8 +19,8 @@ export default function Board(props) {
       fields.push(
       <div 
       key={i} 
-      className="board--field" 
-      onClick={props.changeTurn}
+      className="board--field field--x" 
+      onClick={nextTurn}
       />
       )
     }
@@ -20,7 +28,7 @@ export default function Board(props) {
   }
 
   function whosTurn() {
-    if (props.turn === 'X') {
+    if (currentPlayerTurn === 'x') {
       return xTurn
     } else {
       return oTurn
@@ -44,7 +52,7 @@ export default function Board(props) {
       </div>
       <div className="results">
         <div className="result result--x">
-          <p>X (You)</p>
+          <p>X ({/* Add info about who is it */})</p>
           <h2>0</h2>
         </div>
         <div className="result result-ties">
@@ -52,7 +60,7 @@ export default function Board(props) {
           <h2>0</h2>
         </div>
         <div className="result result--o">
-          <p>O (CPU)</p>
+          <p>O ({/* Add info about who is it */})</p>
           <h2>0</h2>
         </div>
       </div>
