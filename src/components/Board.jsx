@@ -20,11 +20,25 @@ export default function Board(props) {
 
   // board rendering component
   function BoardFields() {
+    const handleCellClick = (i) => {
+      if (board[i] === '' && gameResult === 'ongoing') {
+        const newBoard = [...board];
+        newBoard[i] = currentPlayer;
+        setBoard(newBoard);
+        const winner = checkWinner(newBoard);
+        if (winner) {
+          setGameResult(winner === 'tie' ? 'tie' : `${winner} wins`)
+        } else {
+          nextTurn()
+        }
+      }
+    };
+
     return board.map((cell, i) => (
       <div 
       key={i} 
       className={`board--field field--${cell}`} 
-      onClick={nextTurn}
+      onClick={() => handleCellClick(i)}
       >{cell}</div>
     ))
   }
