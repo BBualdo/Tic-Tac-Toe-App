@@ -1,7 +1,7 @@
 import React from "react";
 import logo from '../images/logo.svg';
 
-export default function Menu() {
+export default function Menu(props) {
   return (
     <section className="menu">
       <img className="app--logo" src={logo}/>
@@ -14,10 +14,16 @@ export default function Menu() {
         <p className="hint">Remember : X Goes First</p>
       </div>
       <div className="menu-buttons">
-        <button className="new-game--button cpu">
+        <button 
+        className="primary-button new-game--button cpu"
+        onClick={props.togglePage}
+        >
           NEW GAME (VS CPU)
         </button>
-        <button className="new-game--button player">
+        <button 
+        className="primary-button new-game--button player"
+        onClick={props.togglePage}
+        >
           NEW GAME (VS PLAYER)
         </button>
       </div>
