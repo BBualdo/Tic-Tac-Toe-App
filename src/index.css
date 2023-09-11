@@ -398,3 +398,229 @@ header {
   box-shadow: none;
   transform: translateY(4px);
 }
+
+@media (max-width: 499px) {
+
+  .pick-mark {
+    align-items: center;
+    background-color: var(--semiDarkNavy);
+    border-radius: 15px;
+    box-shadow: 0px 8px 0px #10212A;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    padding: 24px;
+    width: 327px;
+  }
+
+  .pick--x,
+  .pick--o {
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    height: 56px;
+    width: 50%;
+  }
+
+  .new-game--button {
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    height: 56px;
+    width: 327px;
+  }
+
+  header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 327px;
+  }
+
+  .current-turn {
+    align-items: center;
+    background-color: var(--semiDarkNavy);
+    border-radius: 10px;
+    box-shadow: 0px 4px 0px #10212A;
+    color: var(--silver);
+    display: flex;
+    gap: 9px;
+    padding: 13px 13px;
+  }
+
+  .restart-game--button {
+    background: url(./images/icon-restart.svg) center no-repeat;
+    background-color: var(--silver);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 0px #7a8d96;
+    cursor: pointer;
+    padding: 21px 23px;
+  }
+
+  .board--field {
+    background-color: var(--semiDarkNavy);
+    border-radius: 15px;
+    box-shadow: 0px -8px 0px #10212A inset;
+    cursor: pointer;
+    height: 96px;
+    width: 96px;
+  }
+
+  .field--x {
+    background-image: url(./images/icon-x.svg);
+    cursor: default;
+  }
+  
+  .field--o {
+    background-image: url(./images/icon-o.svg);
+    cursor: default;
+  }
+  
+  .field--x,
+  .field--o {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 44%;
+    color: transparent;
+  }
+  
+  .cell-hover-x {
+    background-image: url(./images/icon-x-outline.svg);
+  }
+  
+  .cell-hover-o {
+    background-image: url(./images/icon-o-outline.svg);
+  }
+  
+  .cell-hover-x,
+  .cell-hover-o {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 44%;
+  }
+  
+  .winner-cell--x {
+    background-color: var(--lightBlue);
+    box-shadow: 0px -8px 0px #118C87 inset;
+    background-image: url(./images/picked-x.svg);
+  }
+  
+  .winner-cell--o {
+    background-color: var(--LightYellow);
+    box-shadow: 0px -8px 0px #CC8B13 inset;
+    background-image: url(./images/picked-o.svg);
+  }
+
+  .scores {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 327px;
+  }
+
+  .score {
+    align-items: center;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 64px;
+    width: 96px;
+  }
+
+  .result-popup,
+  .restart-popup {
+    align-items: center;
+    background-color: var(--semiDarkNavy);
+    display: flex;
+    flex-direction: column;
+    height: 228px;
+    left: 0;
+    padding: 40px 0;
+    position: absolute;
+    right: 0;
+    top: 37%;
+  }
+
+  .restart-popup {
+    gap: 31px;
+    justify-content: center;
+  }
+  
+  .result-popup > h4 {
+    color: var(--silver);
+    font-size: 14px;
+    letter-spacing: 0.875px;
+  }
+  
+  .winner {
+    align-items: center;
+    display: flex;
+    gap: 9px;
+    justify-content: center
+  }
+
+  .winner > img {
+    height: 28px;
+    width: 28px;
+  }
+  
+  .x-won {
+    color: var(--lightBlue);
+    font-size: 24px;
+    letter-spacing: 1.5px;
+  }
+  
+  .o-won {
+    color: var(--LightYellow);
+    font-size: 24px;
+    letter-spacing: 1.5px;
+  }
+  
+  .no-won {
+    color: var(--silver);
+    font-size: 24px;
+    letter-spacing: 1.5px;
+  }
+  
+  .result-buttons {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+  }
+  
+  .result-buttons > button {
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 16px;
+  }
+  
+  .quit--button {
+    background-color: var(--silver);
+    box-shadow: 0px 4px 0px #7a8d96;
+  }
+  
+  .next-round--button {
+    background-color: var(--LightYellow);
+    box-shadow: 0px 4px 0px #CC8B13;
+  }
+  
+  .quit--button:hover {
+    background-color: var(--silverHover);
+  }
+  
+  .next-round--button:hover {
+    background-color: var(--lightYellowHover);
+  }
+  
+  .result-buttons > button:active {
+    box-shadow: none;
+    transform: translateY(4px);
+  }
+}

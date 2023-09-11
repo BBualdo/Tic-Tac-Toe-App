@@ -56,8 +56,6 @@ export default function Board(props) {
   }
 
   React.useEffect(() => {
-    console.log('isComputerTurn:', isComputerTurn);
-    console.log(props.player)
     if (isComputerTurn && gameResult === 'ongoing') {
       // find all empty cells on the board
       const emptyCells = board.reduce((acc, cell, index) => {
@@ -91,12 +89,12 @@ export default function Board(props) {
         {props.player === gameResult && !props.CPU && <h4>Player 1 wins!</h4>}
         {gameResult === 'tie' && <h4></h4>}
         <div className="winner">
-          <img src={
+          {gameResult !== 'tie' && <img src={
             gameResult === 'x' 
             ? xIcon 
             : gameResult === 'o' 
             ? oIcon 
-            : ''}/>
+            : ''}/>}
           <h1 className={
             gameResult === 'x'
             ? 'x-won'
@@ -233,8 +231,10 @@ export default function Board(props) {
         <div className="scores">
           <div className="score score--x">
             <p>X ({
-            props.player === 'x' 
+            props.player === 'x' && !props.CPU
             ? 'Player 1' 
+            : props.player === 'x' && props.CPU
+            ? 'You'
             : props.CPU 
             ? 'CPU'
             : 'Player 2'})</p>
@@ -246,9 +246,11 @@ export default function Board(props) {
           </div>
           <div className="score score--o">
             <p>O ({
-            props.player === 'o' 
+            props.player === 'o' && !props.CPU
             ? 'Player 1' 
-            : props.CPU 
+            : props.player === 'o' && props.CPU
+            ? 'You'
+            : props.CPU  
             ? 'CPU'
             : 'Player 2'})</p>
             <h2>{score.oWins}</h2>
