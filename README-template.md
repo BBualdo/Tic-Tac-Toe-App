@@ -6,7 +6,7 @@ This is a solution to the [Tic Tac Toe challenge on Frontend Mentor](https://www
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
+  - [Screenshots](#screenshots)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -27,94 +27,65 @@ Users should be able to:
 - View the optimal layout for the game depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Play the game either solo vs the computer or multiplayer against another person
-- **Bonus 1**: Save the game state in the browser so that it’s preserved if the player refreshes their browser
-- **Bonus 2**: Instead of having the computer randomly make their moves, try making it clever so it’s proactive in blocking your moves and trying to win
+- **TODO 1**: Save the game state in the browser so that it’s preserved if the player refreshes their browser
+- **TODO 2**: Instead of having the computer randomly make their moves, try making it clever so it’s proactive in blocking your moves and trying to win
 
-### Screenshot
+### Screenshots
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](/main-menu-ss.png)
+![](/board-ss.png)
+![](/result-ss.png)
 
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://bbualdo-tictactoe-app.netlify.app]
 
 ## My process
 
-## Some drafts and loud thoughs
-
-- Chosing mark should save the choice in a player state and save other choice as CPU (or 2nd player depending of which 'New Game' button is clicked).
-✅ Chosing mark should apply a class on it to change the color of image inside and div's color. Same if hovering on inactive choice.
--
+1. Created the envoirment with Vite, builded Components and rendered them on the page.
+2. Styled components without Mobile First approach, because there was no need, the layout stays the same, only widths, heights and font-sizes changes.
+3. Added a ```currentPage``` state in App component. It handles onClick to change the page from Menu to Board.
+4. Added styled ````chooseMark``` logic that asigns chosen mark to ```player1```.
+5. Added ```currentPlayer``` state that helps changing the turn and displaying it in turn div on the player's move.
+6. Added win conditions ```gameResult``` state that helps keep track of current game status: Win/Tie/ongoing.
+7. Styled moves to show appropiate mark on the board field.
+8. Added ```restartGame``` that immediately resets the board after reset button click.
+9. Added ```hoveredCell``` state that indicates which field is hovered and shows outline image of current mark in a turn.
+10. Added ```score``` state as an object of X and O wins and ties, which helps keep track of player score are renders it in proper containers at the bottom of the screen.
+11. Conditionally rendered result overlay with proper messages and buttons to try again or quit to menu.
+12. Replaced immediate restart on restart button with ```showRestart``` state that if true, renders ```AskToRestart``` component that is a popup with 2 buttons to decide if player wants to restart or cancel it.
+13. Updated information which player is 1 and which is 2 in the score containers.
+14. Added logic that rest of the page is darker when any popup (Restart/Result) appears.
+15. Styled fields on the board that includes winner sequence with ```.reduce()``` method.
+16. Added ```computer``` state which is true or false depending on which button in menu is clicked.
+17. Added random CPU logic that takes random empty board field and make a move.
+18. Some fixes, improvements and styling for mobile devices.
 
 ### Built with
-
+- [React](https://reactjs.org/) - JS library
+- Vite
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
 - CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+- Using ```Array[number].fill()``` method
+- Mastered Conditional Rendering
+- Got a harder grip on States
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I'm still begginner in React, but have a solid foundation in JS, so most of React's features are clear for me. But I still have to master Arrays methods, because I see that it is really important in React Development, and I'm gonna get more attention useEffect. 
+I also want to learn one of the CSS preprocessors to make my styling faster and more clear.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+I found **ChatGPT** as very useful learning tool. When I stuck somewhere for a long time or knew what to do, but didn't know how to do it, it was really helpful.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- GitHub - [BBualdo](https://github.com/BBualdo/)
+- Frontend Mentor - [@BBualdo](https://www.frontendmentor.io/profile/BBualdo)

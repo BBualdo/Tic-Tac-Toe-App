@@ -74,7 +74,7 @@ export default function Board(props) {
         // delay simulation
         setTimeout(() => {
           handleCellClick(computerMove);
-        }, 1000)
+        }, (Math.random() * 2000))
       }
     }
   }, [board, gameResult, isComputerTurn])
