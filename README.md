@@ -79,6 +79,7 @@ Users should be able to:
 ### Continued development
 
 I'm still begginner in React, but have a solid foundation in JS, so most of React's features are clear for me. But I still have to master Arrays methods, because I see that it is really important in React Development, and I'm gonna get more attention useEffect. 
+I have to consider add some style classes at the beggining to reuse them later, to speed up my styling proccess.
 I also want to learn one of the CSS preprocessors to make my styling faster and more clear.
 
 ### Useful resources

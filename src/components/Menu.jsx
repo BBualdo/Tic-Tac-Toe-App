@@ -6,7 +6,7 @@ export default function Menu(props) {
   
   return (
     <section className="menu">
-      <img className="app--logo" src={logo}/>
+      <img alt="App Logo" className="app--logo" src={logo}/>
       <div className="pick-mark">
         <h4>Pick Player 1's Mark</h4>
         <div className="mark-picker">
@@ -17,7 +17,7 @@ export default function Menu(props) {
           ? 'picked'
           : 'not-picked'}`}
           >
-            <img src={pickX}/>
+            <img alt="X" src={pickX}/>
           </div>
           <div 
           onClick={() => props.chooseMark('o')}
@@ -26,7 +26,7 @@ export default function Menu(props) {
           ? 'picked'
           : 'not-picked'}`}
           >
-            <img src={pickO}/>
+            <img alt="O" src={pickO}/>
           </div>
         </div>
         <p className="hint">Remember : X Goes First</p>

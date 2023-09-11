@@ -89,7 +89,7 @@ export default function Board(props) {
         {props.player === gameResult && !props.CPU && <h4>Player 1 wins!</h4>}
         {gameResult === 'tie' && <h4></h4>}
         <div className="winner">
-          {gameResult !== 'tie' && <img src={
+          {gameResult !== 'tie' && <img alt="Winner" src={
             gameResult === 'x' 
             ? xIcon 
             : gameResult === 'o' 
@@ -213,9 +213,10 @@ export default function Board(props) {
         ? 'overlay'
         : ''}`}>
         <header>
-        <img className="app--logo" src={logo}/>
+        <img alt="App Logo" className="app--logo" src={logo}/>
         <div className="current-turn">
           <img 
+          alt="Current Player"
           className="current-player--img" 
           src={whosTurn()}/>
           <h4>Turn</h4>
