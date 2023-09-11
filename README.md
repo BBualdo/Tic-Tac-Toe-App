@@ -1,99 +1,91 @@
-# Frontend Mentor - Tic Tac Toe
+# Frontend Mentor - Tic Tac Toe solution
 
-![Design preview for the Tic Tac Toe coding challenge](./preview.jpg)
+This is a solution to the [Tic Tac Toe challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/tic-tac-toe-game-Re7ZF_E2v). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for purchasing this premium Frontend Mentor coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshots](#screenshots)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects. These premium challenges are perfect portfolio pieces, so please feel free to use what you create in your portfolio to show others.
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-**To do this challenge, you need a strong understanding of HTML, CSS, and JavaScript.**
+## Overview
 
-## The challenge
+### The challenge
 
-Your challenge is to build out this Tic Tac Toe game and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - View the optimal layout for the game depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Play the game either solo vs the computer or multiplayer against another person
-- **Bonus 1**: Save the game state in the browser so that it’s preserved if the player refreshes their browser
-- **Bonus 2**: Instead of having the computer randomly make their moves, try making it clever so it’s proactive in blocking your moves and trying to win
+- **TODO 1**: Save the game state in the browser so that it’s preserved if the player refreshes their browser
+- **TODO 2**: Instead of having the computer randomly make their moves, try making it clever so it’s proactive in blocking your moves and trying to win
 
-### Expected behaviour
+### Screenshots
 
-- You can choose to make the default screen either the new game menu or the solo player game board. Note that we're using the solo player game board for the design screenshot, so if you choose the new game menu it won't match up in the design comparison slider. This isn't a big deal, but is something worth considering.
-- On the new game screen, whichever mark isn't selected for the first player is automatically assigned to the second player when the game is started.
-- The first turn of the first round is always played by whoever is playing as X. For every following round, the first turn alternates between O and X.
-- After a round, if the player chooses to quit the game, they should be taken back to the new game menu.
-- If the restart icon in the top right is clicked, the "Restart game?" modal should show and allow the player to reset the game or cancel and continue to play.
+![](/main-menu-ss.png)
+![](/board-ss.png)
+![](/result-ss.png)
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+### Links
 
-## Where to find everything
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [https://bbualdo-tictactoe-app.netlify.app]
 
-Your task is to build out the project to the design file provided. We provide both Sketch and Figma versions of the design, so you can choose which tool you prefer to use. You can download the design file on the platform. **Please be sure not to share them with anyone else.** The design download comes with a `README.md` file as well to help you get set up.
+## My process
 
-All the required assets for this project are in the `/assets` folder. The assets are already exported for the correct screen size and optimized. Some images are reusable at multiple screen sizes. So if you don't see an image in a specific folder, it will typically be in another folder for that page.
+1. Created the envoirment with Vite, builded Components and rendered them on the page.
+2. Styled components without Mobile First approach, because there was no need, the layout stays the same, only widths, heights and font-sizes changes.
+3. Added a ```currentPage``` state in App component. It handles onClick to change the page from Menu to Board.
+4. Added styled ````chooseMark``` logic that asigns chosen mark to ```player1```.
+5. Added ```currentPlayer``` state that helps changing the turn and displaying it in turn div on the player's move.
+6. Added win conditions ```gameResult``` state that helps keep track of current game status: Win/Tie/ongoing.
+7. Styled moves to show appropiate mark on the board field.
+8. Added ```restartGame``` that immediately resets the board after reset button click.
+9. Added ```hoveredCell``` state that indicates which field is hovered and shows outline image of current mark in a turn.
+10. Added ```score``` state as an object of X and O wins and ties, which helps keep track of player score are renders it in proper containers at the bottom of the screen.
+11. Conditionally rendered result overlay with proper messages and buttons to try again or quit to menu.
+12. Replaced immediate restart on restart button with ```showRestart``` state that if true, renders ```AskToRestart``` component that is a popup with 2 buttons to decide if player wants to restart or cancel it.
+13. Updated information which player is 1 and which is 2 in the score containers.
+14. Added logic that rest of the page is darker when any popup (Restart/Result) appears.
+15. Styled fields on the board that includes winner sequence with ```.reduce()``` method.
+16. Added ```computer``` state which is true or false depending on which button in menu is clicked.
+17. Added random CPU logic that takes random empty board field and make a move.
+18. Some fixes, improvements and styling for mobile devices.
 
-The design system in the design file will give you more information about the various colors, fonts, and styles used in this project. Our fonts always come from [Google Fonts](https://fonts.google.com/).
+### Built with
+- [React](https://reactjs.org/) - JS library
+- Vite
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
 
-## Building your project
+### What I learned
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+- Using ```Array[number].fill()``` method
+- Mastered Conditional Rendering
+- Got a harder grip on States
 
-1. Separate the `starter-code` from the rest of this project and rename it to something meaningful for you. Initialize the codebase as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/). **⚠️ IMPORTANT ⚠️: There are already a couple of `.gitignore` files in this project. Please do not remove them or change the content of the files. If you create a brand new project, please use the `.gitignore` files provided in your new codebase. This is to avoid the accidental upload of the design files to GitHub. With these premium challenges, please be sure not to share the design files in your GitHub repo. Thanks!**
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+### Continued development
 
-## Deploying your project
+I'm still begginner in React, but have a solid foundation in JS, so most of React's features are clear for me. But I still have to master Arrays methods, because I see that it is really important in React Development, and I'm gonna get more attention useEffect. 
+I also want to learn one of the CSS preprocessors to make my styling faster and more clear.
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+### Useful resources
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+I found **ChatGPT** as very useful learning tool. When I stuck somewhere for a long time or knew what to do, but didn't know how to do it, it was really helpful.
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+## Author
 
-## Create a custom `README.md`
-
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
-
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
-
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
-
-## Submitting your solution
-
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
-
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
-
-**⚠️ IMPORTANT ⚠️: With these premium challenges, please be sure not to upload the design files to GitHub when you're submitting to the platform and sharing it around. If you've created a brand new project, the easiest way to do that is to copy across the `.gitignore` provided in this starter project.**
-
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-**Have fun building!** 🚀
+- GitHub - [BBualdo](https://github.com/BBualdo/)
+- Frontend Mentor - [@BBualdo](https://www.frontendmentor.io/profile/BBualdo)
