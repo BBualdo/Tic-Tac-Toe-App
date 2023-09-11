@@ -57,9 +57,7 @@ export default function Board(props) {
 
   React.useEffect(() => {
     console.log('isComputerTurn:', isComputerTurn);
-    console.log('gameResult:', gameResult);
-    console.log('board:', board);
-    console.log(currentPlayer);
+    console.log(props.player)
     if (isComputerTurn && gameResult === 'ongoing') {
       // find all empty cells on the board
       const emptyCells = board.reduce((acc, cell, index) => {
@@ -206,6 +204,7 @@ export default function Board(props) {
     setCurrentPlayer('x')
     setGameResult('ongoing')
     setShowRestart(false)
+    setIsComputerTurn(props.player === 'x' ? false : true)
   }
 
   return (
