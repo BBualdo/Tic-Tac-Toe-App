@@ -148,7 +148,6 @@ body {
 .cpu {
   background-color: var(--LightYellow);
   box-shadow: 0px 8px 0px #CC8B13;
-  opacity: 0.1;
 }
 
 .cpu:hover {
