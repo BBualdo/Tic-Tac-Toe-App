@@ -4,7 +4,7 @@ import Board from "./components/Board";
 
 export default function App() {
   const [player1, setPlayer1] = React.useState('x');
-  const [computer, setComputer] = React.useState(false);
+  const [computer, setComputer] = React.useState(true);
   const [currentPage, setCurrentPage] = React.useState('board');
 
 // function to change player related on mark
