@@ -21,7 +21,67 @@ export default function Board(props) {
   // Represents showing Restart Overlay
   const [showRestart, setShowRestart] = React.useState(false);
   // Represent which cells should be styled
-  const [styleWinners, setStyleWinners] = React.useState([])
+  const [styleWinners, setStyleWinners] = React.useState([]);
+  // Represents CPU turn
+  const [isComputerTurn, setIsComputerTurn] = React.useState(props.player === 'x' ? false : true);
+
+  function handleCellClick(i) {
+    if (board[i] === '' && gameResult === 'ongoing') {
+      const newBoard = [...board];
+      newBoard[i] = currentPlayer;
+      setBoard(newBoard);
+      const winner = checkWinner(newBoard);
+      if (winner) {
+        setGameResult(winner === 'tie' ? 'tie' : `${winner}`)
+        // update the score 
+        winner === 'x' 
+        ? setScore(prevScore => ({...prevScore, xWins: prevScore.xWins + 1})) 
+        : winner === 'o'
+        ? setScore(prevScore => ({...prevScore, oWins: prevScore.oWins + 1}))
+        : setScore(prevScore => ({...prevScore, ties: prevScore.ties + 1}))
+      } else {
+        nextTurn()
+      }
+    }
+  };
+
+   // function that switches turns
+   function nextTurn() {
+    setCurrentPlayer(prevPlayer => {
+      return prevPlayer === 'x' ? 'o' : 'x'
+    })
+    props.CPU && currentPlayer === props.player
+    ? setIsComputerTurn(true)
+    : setIsComputerTurn(false)
+  }
+
+  React.useEffect(() => {
+    console.log('isComputerTurn:', isComputerTurn);
+    console.log('gameResult:', gameResult);
+    console.log('board:', board);
+    console.log(currentPlayer);
+    if (isComputerTurn && gameResult === 'ongoing') {
+      // find all empty cells on the board
+      const emptyCells = board.reduce((acc, cell, index) => {
+        if (cell === '') {
+          acc.push(index);
+        }
+        return acc;
+      }, []);
+
+      // check if there are empty cells avaiable for CPU to move
+      if (emptyCells.length > 0) {
+        // generate a random index to select a random empty cell
+        const randomIndex = Math.floor(Math.random() * emptyCells.length);
+        const computerMove = emptyCells[randomIndex];
+
+        // delay simulation
+        setTimeout(() => {
+          handleCellClick(computerMove);
+        }, 1000)
+      }
+    }
+  }, [board, gameResult, isComputerTurn])
 
   // Result components
   function Result() {
@@ -68,39 +128,13 @@ export default function Board(props) {
     // Represents cell hover image
     const [hoveredCell, setHoveredCell] = React.useState(null);
     
-    const handleCellClick = (i) => {
-      if (board[i] === '' && gameResult === 'ongoing') {
-        const newBoard = [...board];
-        newBoard[i] = currentPlayer;
-        setBoard(newBoard);
-        const winner = checkWinner(newBoard);
-        if (winner) {
-          setGameResult(winner === 'tie' ? 'tie' : `${winner}`)
-          // update the score 
-          winner === 'x' 
-          ? setScore(prevScore => ({...prevScore, xWins: prevScore.xWins + 1})) 
-          : winner === 'o'
-          ? setScore(prevScore => ({...prevScore, oWins: prevScore.oWins + 1}))
-          : setScore(prevScore => ({...prevScore, ties: prevScore.ties + 1}))
-        } else {
-          nextTurn()
-        }
-      }
-    };
-
-     // function that switches turns
-    function nextTurn() {
-      setCurrentPlayer(prevPlayer => {
-        return prevPlayer === 'x' ? 'o' : 'x'
-      })
-    }
-
     return board.map((cell, i) => (
       <div 
       key={i} 
       className={
         `board--field field--${cell} 
-        ${hoveredCell === i 
+        ${!isComputerTurn 
+          && hoveredCell === i 
           && cell === '' 
           && gameResult === 'ongoing' 
           && `cell-hover-${currentPlayer}`}
