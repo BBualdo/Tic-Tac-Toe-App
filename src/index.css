@@ -22,6 +22,7 @@ h2,
 h3, 
 h4, 
 button {
+  color: var(--darkNavy);
   font-family: 'Outfit', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
