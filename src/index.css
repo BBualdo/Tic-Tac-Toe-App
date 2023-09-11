@@ -204,6 +204,10 @@ header {
   width: 20px;
 }
 
+.current-turn > h4 {
+  color: var(--silver);
+}
+
 .restart-game--button {
   background: url(./images/icon-restart.svg) center no-repeat;
   background-color: var(--silver);
